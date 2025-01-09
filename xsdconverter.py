@@ -92,8 +92,8 @@ def to_xlsx(zs_elements, xlsx, ignorecomments=False, sortchildren=False):
 
 parser = argparse.ArgumentParser(
     description='OpenDRIVE xsd to zserio schema / xlsx')
-parser.add_argument('--xsddir', type=str, default='xsd_schema-1.8.0', help='xsd file directory')
-parser.add_argument('--output', type=str, default='OpenDRIVE-1.8.0', help='output file')
+parser.add_argument('--xsddir', type=str, default='xsd_schema-1.8.1', help='xsd file directory')
+parser.add_argument('--output', type=str, default='OpenDRIVE-1.8.1', help='output file')
 parser.add_argument('--ignorecomments', type=bool, default=False, help='Ignore comments (Default to False)')
 parser.add_argument('--sortchildren', type=bool, default=False, help='Sort child nodes or not  (Default to False)')
 args = parser.parse_args()

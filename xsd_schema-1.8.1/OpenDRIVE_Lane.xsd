@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--ASAM OpenDRIVE V1.8.0
 
-© by ASAM e.V., 2023
+Â© by ASAM e.V., 2024
 
 ASAM OpenDRIVE defines a file format for the precise analytical description of road networks
 
@@ -347,6 +347,7 @@ Lanes contain a series of lane section elements that define the characteristics 
                     <xs:element maxOccurs="unbounded" minOccurs="1" name="laneSection" type="t_road_lanes_laneSection"/>
                     <xs:group maxOccurs="unbounded" minOccurs="0" ref="g_additionalData"/>
                 </xs:sequence>
+                <xs:assert test="if (count(laneOffset) &gt; 0) then count(laneSection//border) = 0 else true()"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>

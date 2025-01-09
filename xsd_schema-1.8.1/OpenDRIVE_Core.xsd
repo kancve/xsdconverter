@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--ASAM OpenDRIVE V1.8.0
 
-© by ASAM e.V., 2023
+Â© by ASAM e.V., 2024
 
 ASAM OpenDRIVE defines a file format for the precise analytical description of road networks
 
@@ -37,10 +37,6 @@ See www.asam.net/license.html for further details.
         </xs:complexType>
         <xs:key name="k_junctionId">
             <xs:selector xpath="junction"/>
-            <xs:field xpath="@id"/>
-        </xs:key>
-        <xs:key name="k_junction_connectionId">
-            <xs:selector xpath="connection"/>
             <xs:field xpath="@id"/>
         </xs:key>
         <xs:keyref name="r_junction_connection_incomingRoad" refer="k_roadId">

@@ -103,8 +103,7 @@ class ZSConvert:
             if extension is not None:
                 complex_type = extension
                 # base
-                # There may be nesting in t_road_signals_signal, ignore it for now
-                if extension.get('base') not in ['_OpenDriveElement', 't_road_signals_signal']:
+                if extension.get('base') not in ['_OpenDriveElement']:
                     zs_element.append(ZSElement(
                         comment=None,
                         name='base',
@@ -140,5 +139,17 @@ class ZSConvert:
                             comment=self.get_comments(alternative),
                             name=alternative.get('type'),
                             type=alternative.get('type').replace('xs:', '')))
+
+        # choice
+        choice = complex_type.find('xs:choice', namespaces=ZSConvert.xsns)
+        if choice is not None:
+            elements = choice.findall(
+                'xs:element', namespaces=ZSConvert.xsns)
+            for element in elements:
+                zs_element.append(ZSElement(
+                    comment=self.get_comments(element),
+                    name=element.get('name'),
+                    type=element.get('type').replace('xs:', ''),
+                    use=(element.get('minOccurs') or '') + '..' + (element.get('maxOccurs') or '')))
 
         return zs_element
